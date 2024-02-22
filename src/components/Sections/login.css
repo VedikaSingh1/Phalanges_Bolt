@@ -1,0 +1,143 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* End Global rules */
+
+/* Start body rules */
+body {
+  background-image: linear-gradient(-225deg, #1c93da 0%, #1b2e5c 100%);
+  background-image: linear-gradient(to top, #c6dcee 0%, #1b2e5c 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: "Times New Roman", sans-serif;
+  opacity: 0.95;
+  /* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+}
+
+form {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva Verdana, sans-serif;
+  font-size: xx-large;
+  width: 450px;
+  min-height: 500px;
+  height: auto;
+  border-radius: 5px;
+  margin: 2% auto;
+  box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+  padding: 2%;
+  background-image: linear-gradient(-225deg, #c6dcee 50%, #1c93da 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input:hover,
+select:hover {
+  border: 1px solid #000; /* Solid black border on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+  transform: scale(1.02); /* Slightly increase size on hover */
+}
+
+input,
+select {
+  margin-top: 10%;
+  padding: 0 20px;
+  display: inline-block;
+
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s linear;
+  margin: 7% auto;
+  letter-spacing: 0.05em;
+}
+
+button {
+  font-weight: bold;
+  font-size: large;
+  display: inline-block;
+  color: #252537;
+  width: 280px;
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s linear;
+  margin: 7% auto;
+  letter-spacing: 0.05em;
+}
+
+button:hover {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+button:hover {
+  animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+  0% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+/* Submits */
+.submits {
+  width: 48%;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+/* Forgot Password button FAF3DD */
+.frgt-pass {
+  background: transparent;
+}
+
+/* Sign Up button  */
+.sign-up {
+  background: #b8f2e6;
+}
+.item-1 {
+  font-weight: bold;
+}
+.item-2 {
+  font-weight: bold;
+}
+.item-3 {
+  font-weight: bold;
+}
+/* buttons hover */
+button:hover {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+/* buttons hover Animation */
+button:hover {
+  animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+  0% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}

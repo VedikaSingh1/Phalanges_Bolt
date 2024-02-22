@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import "./login.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
   const [userType, setUserType] = useState("patient"); // Default to "Patient"
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const passwordInputRef = useRef(null);
+  const navigate = useNavigate();
+
+  const togglePasswordVisibility = () => {
+    const passwordInput = passwordInputRef.current;
+    if (passwordInput) {
+      passwordInput.type =
+        passwordInput.type === "password" ? "text" : "password";
+    }
+    setPasswordVisible(!passwordVisible);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
@@ -34,7 +48,7 @@ export default function Login() {
         const jwtToken = data.data;
         console.log("login works. jwt: ", jwtToken);
         localStorage.setItem("jwtToken", jwtToken);
-        //window.location.href = "Landingpage.html";
+        navigate(`/${userType}`); // Redirect to the appropriate page
       })
       .catch((error) => {
         console.error("Login Failed:", error);
@@ -44,10 +58,9 @@ export default function Login() {
 
   return (
     <div>
-      <h1>LOGIN PAGE REACHED</h1>
       <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="userType">User Type:</label>
+        <div className="item-1">
+          <label htmlFor="userType">User Type: </label>
           <select
             id="userType"
             value={userType}
@@ -57,23 +70,27 @@ export default function Login() {
             <option value="doctor">Doctor</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="username">Username:</label>
+        <div className="item-2">
           <input
+            placeholder="Username"
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className="item-3">
           <input
-            type="password"
+            placeholder="Password"
+            type={passwordVisible ? "text" : "password"}
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            ref={passwordInputRef}
           />
+          <span id="eye" onClick={togglePasswordVisibility}>
+            👁️
+          </span>
         </div>
 
         <button id="btn_signin" type="submit">

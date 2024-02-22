@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/NavBar/navBar";
 import Intro from "./components/Sections/intro";
-import OurDcotors from "./components/Sections/our_doctors";
+import OurDoctors from "./components/Sections/our_doctors";
 import Services from "./components/Sections/services";
 import ContactUs from "./components/Sections/contact_us";
 import Login from "./components/Sections/login";
@@ -28,7 +28,7 @@ class App extends Component {
                     dark={false}
                     id="section1"
                   />
-                  <OurDcotors
+                  <OurDoctors
                     title="Our Doctors"
                     subtitle="In the realm of healthcare, our world-class doctors stand as beacons of expertise and compassion. Their unwavering commitment to patient care, coupled with their extensive knowledge and skill, defines a standard of excellence that transcends boundaries. These dedicated professionals navigate the intricacies of medical science with precision and grace, providing invaluable support to those in need. Their tireless efforts, coupled with a genuine concern for the well-being of their patients, create a harmonious synergy that embodies the spirit of healthcare at its finest. Our world-class doctors inspire confidence, instill hope, and exemplify the epitome of medical excellence, shaping a healthier and brighter future for us all."
                     dark={true}
