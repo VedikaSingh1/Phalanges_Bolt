@@ -9,6 +9,7 @@ import ContactUs from "./components/Sections/contact_us";
 import Login from "./components/Sections/login";
 import Patient from "./components/Sections/Patient/patient";
 import Doctor from "./components/Sections/Doctor/doctor";
+import AppointmentBooking from "./components/Sections/Patient/appointmentBooking";
 
 class App extends Component {
   render() {
@@ -52,6 +53,10 @@ class App extends Component {
             <Route path="/login-signup" element={<Login />} />
             <Route path="/patient" element={<Patient />} />
             <Route path="/doctor" element={<Doctor />} />
+            <Route
+              path="/appointment-booking"
+              element={<AppointmentBooking />}
+            />
           </Routes>
         </div>
       </Router>

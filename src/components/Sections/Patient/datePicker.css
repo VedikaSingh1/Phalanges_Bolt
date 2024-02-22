@@ -1,0 +1,62 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+  grid-gap: 15px; /* Uniform margin between the boxes */
+  background-color: #c6dcee;
+  height: 100vh; /* Make the container take the full height of the viewport */
+  padding: 20px; /* Optional padding for the container */
+}
+.appointment-booking-container {
+  height: 80%;
+  margin: 50px auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  min-width: 400px;
+}
+#list {
+  margin: 50px 10px;
+}
+.date-picker-container,
+.time-picker-container,
+.speciality-picker-container {
+  width: 70%;
+}
+
+label {
+  display: block;
+  margin-top: 5px;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.booked-appointment {
+  margin-top: 20px;
+  color: #28a745;
+}
