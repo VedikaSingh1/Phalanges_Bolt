@@ -79,28 +79,28 @@ export default function ContactUs({ title, subtitle, dark, id }) {
             <div className="contact-card">
               <div className="info">
                 <div className="name">
-                  <h1>Vedika Singh</h1>
+                  <h1>Aman Sood</h1>
                 </div>
-                <div className="email">vedikasingh3153@gmail.com</div>
+                <div className="email">soodaman92@gmail.com</div>
                 <div
                   className="linkedIn"
                   onClick={() =>
                     handleRedirect(
-                      "https://www.linkedin.com/in/vedika-singh-90840a24b/"
+                      "https://www.linkedin.com/in/aman-sood-49b3aa247/"
                     )
                   }
                   style={{ cursor: "pointer" }}
                 >
-                  LinkedIn: https://www.linkedin.com/in/vedika-singh-90840a24b/
+                  LinkedIn: https://www.linkedin.com/in/aman-sood-49b3aa247/
                 </div>
                 <div
                   className="gitHub"
                   onClick={() =>
-                    handleRedirect("https://github.com/VedikaSingh1")
+                    handleRedirect("https://github.com/AmanSoodprog")
                   }
                   style={{ cursor: "pointer" }}
                 >
-                  GitHub: https://github.com/VedikaSingh1
+                  GitHub: https://github.com/AmanSoodprog
                 </div>
               </div>
             </div>

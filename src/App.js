@@ -7,6 +7,8 @@ import OurDcotors from "./components/Sections/our_doctors";
 import Services from "./components/Sections/services";
 import ContactUs from "./components/Sections/contact_us";
 import Login from "./components/Sections/login";
+import Patient from "./components/Sections/Patient/patient";
+import Doctor from "./components/Sections/Doctor/doctor";
 
 class App extends Component {
   render() {
@@ -48,6 +50,8 @@ class App extends Component {
               }
             />
             <Route path="/login-signup" element={<Login />} />
+            <Route path="/patient" element={<Patient />} />
+            <Route path="/doctor" element={<Doctor />} />
           </Routes>
         </div>
       </Router>
