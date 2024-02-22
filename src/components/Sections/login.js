@@ -1,10 +1,11 @@
 import React from "react";
 
-export default function Login({ title, subtitle, dark, id }) {
+export default function Login() {
+  console.log("Successful log in");
   return (
     <div className="text">
-      <h1>{title}</h1>
-      <p>{subtitle}</p>
+      {/* api password checking */}
+      <h1> LOGIN PAGE REACHED</h1>
     </div>
   );
 }
