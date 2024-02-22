@@ -26,12 +26,15 @@ const Chatbot = () => {
   // Function to receive a message from the Rasa backend
   const receiveMessage = async () => {
     // Fetch data using "GET" from the same API
-    const response = await fetch("https://cb12-136-233-9-98.ngrok-free.app", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://phalanges-bolt.onrender.com/doctor/getall",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     // Parse the response and update the messages state
     const data = await response.json();
@@ -58,16 +61,16 @@ const Chatbot = () => {
   // Function to render the chatbot messages
   const renderMessages = () => {
     return messages.map((message, index) => (
-      <div key={index}>
+      <div className="message" key={index}>
         <p>{message.text}</p>
       </div>
     ));
   };
 
   return (
-    <div>
-      <div className="messages">{renderMessages()}</div>
+    <div className="chatbot-container">
       <form onSubmit={handleSubmit}>
+        <div className="messages">{renderMessages()}</div>
         <input
           type="text"
           placeholder="Start Typing..."

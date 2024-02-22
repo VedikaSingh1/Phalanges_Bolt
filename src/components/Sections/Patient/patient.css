@@ -14,18 +14,22 @@ body {
 }
 
 .box-1 {
+  height: 70%;
+  width: auto;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  grid-gap: 10%;
-  margin: 40px 30px;
-  padding: 40px;
+  grid-gap: 1%;
+  margin: 40px 40px;
+  padding: 20px;
+  padding-top: 10px;
   background-color: white;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   text-align: center;
 }
 .box-2 {
-  margin: 40px 30px;
+  height: 70%;
+  margin: 40px 40px;
   padding: 40px;
   background-color: white;
   border-radius: 15px;
