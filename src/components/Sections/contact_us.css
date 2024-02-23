@@ -8,7 +8,9 @@
   padding: 20px;
   margin: 10px;
   flex: 0 1 calc(33.33% - 20px);
-  max-width: calc(33.33% - 20px);
+  min-width: calc(33.33% - 20px);
+  justify-content: center;
+  text-align: center;
 }
 
 .contact-card {
@@ -22,4 +24,8 @@
 
 .info {
   flex-grow: 1;
+}
+.name {
+  font-size: small !important;
+  text-align: center !important;
 }
