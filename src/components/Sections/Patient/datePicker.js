@@ -34,19 +34,25 @@ export default function DatePicking() {
     }
   };
 
-  const handleBookAppointment = () => {
+  const handleBookAppointment = (selectedDoctor) => {
     if (selectedTime && selectedSpeciality && selectedSpeciality) {
-      const API_POST = `https://phalanges-bolt.onrender.com/appointment/book`;
+      const API_POST = `https://phalanges-bolt.onrender.com/patient/createappointment`;
 
       const appointmentData = {
+        doctor_email: selectedDoctor.email,
         date: selectedDate.toISOString(),
         time: selectedTime,
-        speciality: selectedSpeciality,
       };
+      const jwtToken = localStorage.getItem("jwtToken");
+      //console.log('stored jwtToken in landing: ',jwtToken)
+      if (!jwtToken) {
+        console.log("No JWT token found.");
+      }
 
       fetch(API_POST, {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${jwtToken}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(appointmentData),
@@ -144,7 +150,9 @@ export default function DatePicking() {
           </select>
         </div>
         <button onClick={handleCheck}>Check For Doctors</button>
-        <button onClick={handleBookAppointment}>Book Appointment</button>
+        <button onClick={handleBookAppointment(selectedDoctor)}>
+          Book Appointment
+        </button>
         {isAppointmentBooked && (
           <p>{`Successfully booked appointment on ${selectedDate.toDateString()} at ${selectedTime}`}</p>
         )}
