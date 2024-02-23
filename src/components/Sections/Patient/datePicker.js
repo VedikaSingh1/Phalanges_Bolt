@@ -23,12 +23,20 @@ export default function DatePicking() {
         .then((data) => {
           console.log(data);
           setDoctorList(data);
+
+          // Check if the selected doctor is in the new doctor list
+          const updatedSelectedDoctor = data.find(
+            (doctor) => doctor.email === selectedDoctor?.email
+          );
+
+          // Update the selectedDoctor state with the updated selected doctor
+          setSelectedDoctor(updatedSelectedDoctor || null);
         })
         .catch((error) => {
           console.error("Error fetching doctor list:", error);
         });
 
-      //setIsAppointmentBooked(true);
+      // setIsAppointmentBooked(true);
     } else {
       setDoctorList(["Error !"]);
     }

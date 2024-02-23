@@ -6,8 +6,10 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
 
   // Function to send a message to the Rasa backend
+
   const sendMessage = async () => {
     // Send the input message to the Rasa backend
+    /*
     const response = await fetch("https://cb12-136-233-9-98.ngrok-free.app", {
       method: "POST",
       headers: {
@@ -17,24 +19,25 @@ const Chatbot = () => {
         message: input,
       }),
     });
-
+    */
     // Parse the response and update the messages state
-    const data = await response.json();
+    const data = "hehe";
     setMessages([...messages, ...data]);
   };
 
   // Function to receive a message from the Rasa backend
   const receiveMessage = async () => {
     // Fetch data using "GET" from the same API
+    /*
     const response = await fetch("https://cb12-136-233-9-98.ngrok-free.app", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-
+    */
     // Parse the response and update the messages state
-    const data = await response.json();
+    const data = "hehehehehehehehehehe";
     setMessages([...messages, ...data]);
   };
 
