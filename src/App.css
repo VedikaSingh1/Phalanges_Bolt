@@ -34,7 +34,9 @@
   font-weight: var(--h1-font-weight);
   padding: 0 auto;
 }
-
+#section2 {
+  text-align: left !important;
+}
 #section3 {
   background-color: #ffffff;
 }

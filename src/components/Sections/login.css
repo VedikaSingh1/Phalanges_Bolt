@@ -141,3 +141,9 @@ button:hover {
     transform: translateY(5px);
   }
 }
+
+#eye {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 5px;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,20 +9,100 @@ export default function DatePicking() {
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedSpeciality, setSelectedSpeciality] = useState("");
   const [isAppointmentBooked, setIsAppointmentBooked] = useState(false);
+  const [doctorList, setDoctorList] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
 
-  const handleBookAppointment = () => {
-    if (selectedTime && selectedTime) {
-      setIsAppointmentBooked(true);
-      //const API_Post ="https://phalanges-bolt.onrender.com/patient/createappointment";
+  const handleCheck = () => {
+    if (selectedTime && selectedSpeciality && selectedSpeciality) {
+      // Make API call to fetch list of doctors
+      // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
+      const API_GET = `https://phalanges-bolt.onrender.com/doctor/getall`;
+
+      fetch(API_GET)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setDoctorList(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching doctor list:", error);
+        });
+
+      //setIsAppointmentBooked(true);
     } else {
-      // Handle error, show a message or alert
+      setDoctorList(["Error !"]);
     }
   };
 
+  const handleBookAppointment = () => {
+    if (selectedTime && selectedSpeciality && selectedSpeciality) {
+      const API_POST = `https://phalanges-bolt.onrender.com/appointment/book`;
+
+      const appointmentData = {
+        date: selectedDate.toISOString(),
+        time: selectedTime,
+        speciality: selectedSpeciality,
+      };
+
+      fetch(API_POST, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(appointmentData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          if (data.success) {
+            setIsAppointmentBooked(true);
+          } else {
+            setDoctorList(["Error: " + data.message]);
+          }
+        })
+        .catch((error) => {
+          console.error("Error booking appointment:", error.message);
+          setDoctorList(["Error: Failed to fetch data"]);
+        });
+    } else {
+      setDoctorList(["Error: Please fill in all the fields"]);
+    }
+  };
+
+  useEffect(() => {
+    // Logic for highlighting the selected doctor record
+    const doctorListContainer = document.getElementById("list");
+
+    if (doctorListContainer) {
+      const doctorItems = doctorListContainer.getElementsByTagName("li");
+
+      // Remove highlighting from all doctor items
+      Array.from(doctorItems).forEach((item) => {
+        item.classList.remove("selected-doctor");
+      });
+
+      // Highlight the selected doctor item
+      if (selectedDoctor) {
+        const selectedDoctorItem = doctorListContainer.querySelector(
+          `[data-id="${selectedDoctor.email}"]`
+        );
+        if (selectedDoctorItem) {
+          selectedDoctorItem.classList.add("selected-doctor");
+        }
+      }
+    }
+  }, [selectedDoctor, doctorList]);
+
   return (
     <div className="main">
-      <div className="appointment-booking-container">
+      <div className="appointment-booking-container" id="selection">
         <div className="date-picker-container">
+          <h1> Booking</h1>
           <label>Date: </label>
           <DatePicker
             selected={selectedDate}
@@ -30,7 +110,6 @@ export default function DatePicking() {
             dateFormat="dd/MM/yyyy"
           />
         </div>
-
         <div className="time-picker-container">
           <label>Time: </label>
           <select
@@ -49,7 +128,6 @@ export default function DatePicking() {
             <option value="05:00 PM">05:00 PM</option>
           </select>
         </div>
-
         <div className="speciality-picker-container">
           <label>Speciality: </label>
           <select
@@ -65,14 +143,31 @@ export default function DatePicking() {
             <option value="neurologist">Neurologist</option>
           </select>
         </div>
-
+        <button onClick={handleCheck}>Check For Doctors</button>
         <button onClick={handleBookAppointment}>Book Appointment</button>
-
         {isAppointmentBooked && (
           <p>{`Successfully booked appointment on ${selectedDate.toDateString()} at ${selectedTime}`}</p>
         )}
       </div>
-      <div className="appointment-booking-container" id="list"></div>
+
+      <div className="appointment-booking-container" id="list">
+        {/* Render the list of doctors */}
+        <ul>
+          {doctorList.map((doctor) => (
+            <li
+              className="record"
+              key={doctor.email}
+              onClick={() => setSelectedDoctor(doctor)}
+            >
+              <ul>
+                <li className="name">{doctor.name}</li>
+                <li className="text">{doctor.specialty}</li>
+                <li className="text">{doctor.hospital}</li>
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
